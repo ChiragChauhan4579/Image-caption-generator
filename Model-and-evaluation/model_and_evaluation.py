@@ -223,10 +223,13 @@ dump(tokenizer, open('tokenizer.pkl', 'wb'))
 
 """# Evaluation"""
 
+import cv2
+from google.colab.patches import cv2_imshow
+
 def extract_features(filename):
     model = VGG16()
     model.layers.pop()
-    model = tf.keras.layers.Model(inputs=model.inputs, outputs=model.layers[-1].output)
+    model = tf.keras.models.Model(inputs=model.inputs, outputs=model.layers[-1].output)
     image = load_img(filename, target_size=(224, 224))
     image = img_to_array(image)
     image = image.reshape((1, image.shape[0], image.shape[1], image.shape[2]))
@@ -264,10 +267,15 @@ def generate_desc(model, tokenizer, photo, max_length):
             break
     return in_text
 
-tokenizer = load(open('tokenizer.pkl', 'rb'))
-max_length = 3
-model = load_model('model.h5')
-photo = extract_features('example.jpg')
+tokenizer = load(open('/content/tokenizer.pkl', 'rb'))
+max_length = 30
+model = load_model('/content/model.h5')
+photo = extract_features('/content/photo.jfif')
 description = generate_desc(model, tokenizer, photo, max_length)
 description = cleanup_summary(description)
+img = cv2.imread('/content/photo.jfif')
+img = cv2.resize(img,(300,300))
+cv2_imshow(img)
 print(description)
+
+"""Need to train the model a lot more to make predictions better"""
