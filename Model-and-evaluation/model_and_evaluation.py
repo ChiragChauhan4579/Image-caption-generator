@@ -201,10 +201,10 @@ def evaluate_model(model, descriptions, photos, tokenizer, max_length):
         actual.append(references)
         predicted.append(yhat.split())
 
-    print('BLEU-1: %f' % corpus_bleu(actual, predicted, weights=(1.0, 0, 0, 0)))
-    print('BLEU-2: %f' % corpus_bleu(actual, predicted, weights=(0.5, 0.5, 0, 0)))
-    print('BLEU-3: %f' % corpus_bleu(actual, predicted, weights=(0.3, 0.3, 0.3, 0)))
-    print('BLEU-4: %f' % corpus_bleu(actual, predicted, weights=(0.25, 0.25, 0.25, 0.25)))
+    print('BLEU-1: ',corpus_bleu(actual, predicted, weights=(1.0, 0, 0, 0)))
+    print('BLEU-2: ',corpus_bleu(actual, predicted, weights=(0.5, 0.5, 0, 0)))
+    print('BLEU-3: ',corpus_bleu(actual, predicted, weights=(0.3, 0.3, 0.3, 0)))
+    print('BLEU-4: ',corpus_bleu(actual, predicted, weights=(0.25, 0.25, 0.25, 0.25)))
 
 filename = '/content/model.h5'
 model_trial = load_model(filename)
