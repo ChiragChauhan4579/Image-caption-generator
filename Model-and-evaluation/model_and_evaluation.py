@@ -191,6 +191,8 @@ def cleanup_summary(summary):
         summary = summary[:index]
     return summary
 
+"""# Evaluation"""
+
 def evaluate_model(model, descriptions, photos, tokenizer, max_length):
     actual, predicted = list(), list()
 
@@ -211,8 +213,6 @@ model_trial = load_model(filename)
 evaluate_model(model_trial, test_descriptions, test_features, tokenizer, max_length)
 
 dump(tokenizer, open('tokenizer.pkl', 'wb'))
-
-"""# Evaluation"""
 
 import cv2
 from google.colab.patches import cv2_imshow
