@@ -1,21 +1,3 @@
-""" Run these commands in yout cmd
-wget https://github.com/jbrownlee/Datasets/releases/download/Flickr8k/Flickr8k_Dataset.zip
-wget https://github.com/jbrownlee/Datasets/releases/download/Flickr8k/Flickr8k_text.zip
-"""
-from zipfile import ZipFile
-file_name = "Flickr8k_Dataset.zip" #Do give a proper directory
-with ZipFile(file_name, 'r') as zip:
-    print('Extracting all the files now...')
-    zip.extractall()
-    print('Done!')
-
-from zipfile import ZipFile
-file_name = "Flickr8k_text.zip" #Do give a proper directory
-with ZipFile(file_name, 'r') as zip:
-    print('Extracting all the files now...')
-    zip.extractall()
-    print('Done!')
-
 from pickle import load,dump
 import tensorflow as tf
 from tensorflow.keras.preprocessing.text import Tokenizer
